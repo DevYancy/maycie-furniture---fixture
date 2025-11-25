@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maycie Website Preview</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            padding: 3rem;
+            text-align: center;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: #c7956d;
+            margin-bottom: 2rem;
+            font-weight: 500;
+        }
+        
+        .success-icon {
+            font-size: 5rem;
+            margin-bottom: 1rem;
+        }
+        
+        p {
+            font-size: 1.1rem;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 1rem 2.5rem;
+            background: #c7956d;
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .btn:hover {
+            background: #2c3e50;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+            text-align: left;
+        }
+        
+        .feature {
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .feature-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+        
+        .feature h3 {
+            color: #2c3e50;
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .feature p {
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .file-structure {
+            background: #2c3e50;
+            color: #fff;
+            padding: 1.5rem;
+            border-radius: 10px;
+            text-align: left;
+            font-family: 'Courier New', monospace;
+            margin: 2rem 0;
+            font-size: 0.9rem;
+            line-height: 1.8;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="success-icon">🎉</div>
+        <h1>Website Ready!</h1>
+        <p class="subtitle">Maycie Furniture & Fixture Trading</p>
+        
+        <p>Your beautiful furniture website has been created successfully! The website includes a modern design, smooth animations, and is fully responsive for all devices.</p>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">📱</div>
+                <h3>Responsive</h3>
+                <p>Works perfectly on desktop, tablet, and mobile</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">🎨</div>
+                <h3>Beautiful Design</h3>
+                <p>Modern, elegant furniture showcase</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h3>Interactive</h3>
+                <p>Smooth scrolling, animations, and effects</p>
+            </div>
+            <div class="feature">
+                <div class="feature-icon">📸</div>
+                <h3>Gallery</h3>
+                <p>Stunning furniture images with lightbox</p>
+            </div>
+        </div>
+        
+        <div class="file-structure">
+maycie-website/<br>
+├── 📄 index.html<br>
+├── 📄 README.md<br>
+├── 📄 START.bat<br>
+├── 📁 css/<br>
+│   └── styles.css<br>
+├── 📁 js/<br>
+│   └── script.js<br>
+└── 📁 images/ (for your photos)
+        </div>
+        
+        <a href="index.html" class="btn">🚀 View Website</a>
+        <a href="README.md" class="btn" target="_blank">📖 Read Documentation</a>
+        
+        <p style="margin-top: 2rem; font-size: 0.9rem; color: #999;">
+            To get started: Double-click <strong>START.bat</strong> or open <strong>index.html</strong> in your browser
+        </p>
+    </div>
+</body>
+</html>
+

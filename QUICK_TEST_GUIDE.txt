@@ -1,0 +1,176 @@
+╔══════════════════════════════════════════════════════════════╗
+║                                                              ║
+║     🧪 QUICK TEST GUIDE - Contact Form Email Setup          ║
+║                                                              ║
+╚══════════════════════════════════════════════════════════════╝
+
+✅ FORM CONFIGURED FOR TESTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Test Email: yancyalmiranez@gmail.com
+Status: Ready to test!
+
+
+📋 STEP-BY-STEP TESTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+STEP 1: Run Your Website
+─────────────────────────
+Option A: Double-click "start-server.bat"
+Option B: Use VS Code Live Server
+Option C: Deploy to GitHub Pages
+
+Your site should open at:
+→ http://localhost:8000 (local)
+→ https://username.github.io/repo/ (GitHub)
+
+
+STEP 2: Submit Test Form
+─────────────────────────
+1. Go to Contact section
+2. Fill out the form:
+   Name: Test User
+   Email: test@example.com
+   Phone: 09123456789
+   Subject: Product Information
+   Message: This is a test
+
+3. Click "Send Message"
+
+
+STEP 3: Verify Email (FIRST TIME ONLY!)
+────────────────────────────────────────
+⚠️ THIS IS THE MOST IMPORTANT STEP!
+
+1. Open Gmail: yancyalmiranez@gmail.com
+2. Look for email from: noreply@formsubmit.co
+3. Subject: "FormSubmit - Activate your form"
+4. Click the activation link
+5. See confirmation message
+
+📧 Check these folders if not in inbox:
+   • Spam/Junk
+   • Promotions
+   • Updates
+   • All Mail
+
+
+STEP 4: Test Again
+──────────────────
+After clicking verification link:
+
+1. Go back to your website
+2. Fill out form with NEW test data
+3. Click "Send Message"
+4. Wait 1-2 minutes
+5. Check email: yancyalmiranez@gmail.com
+6. You should receive the form data!
+
+
+✅ SUCCESS INDICATORS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+You'll know it's working when:
+
+✓ Verification email received
+✓ Activation link clicked
+✓ Test submission email received
+✓ Email contains all form data
+✓ Thank you page displays
+
+
+📧 EXPECTED EMAIL FORMAT
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+From: FormSubmit <noreply@formsubmit.co>
+To: yancyalmiranez@gmail.com
+Subject: New Contact Form Submission - Maycie Furniture
+
+┌────────────────────────────────────────┐
+│ Name: Test User                        │
+│ Email: test@example.com                │
+│ Phone: 09123456789                     │
+│ Subject: Product Information           │
+│ Message: This is a test                │
+└────────────────────────────────────────┘
+
+
+🔧 TROUBLESHOOTING
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Problem: No verification email
+Solution: Check spam folder, wait 5-10 minutes
+
+Problem: Clicked link but no emails
+Solution: Submit form again (new submission needed)
+
+Problem: Form doesn't submit
+Solution: Make sure you're on http:// or https:// (not file://)
+
+Problem: Emails go to spam
+Solution: Mark as "Not Spam" and add to contacts
+
+
+🔄 AFTER TESTING: SWITCH TO PRODUCTION
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+Once testing is successful:
+
+1. Update index.html line ~463:
+   Change: yancyalmiranez@gmail.com
+   To: mayzraviz28@gmail.com
+
+2. Update js/script.js line ~175:
+   Change: yancyalmiranez@gmail.com
+   To: mayzraviz28@gmail.com
+
+3. Repeat verification for production email
+
+4. Deploy to GitHub Pages
+
+5. Production ready! ✅
+
+
+💡 QUICK TIPS
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+• First submission = verification (no email received)
+• Second submission = first real test
+• Emails arrive in 1-2 minutes
+• Check spam folder first!
+• Mark FormSubmit as "Not Spam"
+• Test on mobile too
+
+
+🎯 TESTING CHECKLIST
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+□ Website running on web server
+□ Form submitted with test data
+□ Verification email received
+□ Activation link clicked
+□ Second test form submitted
+□ Test email received
+□ All form fields in email
+□ Thank you page displayed
+□ Ready for production!
+
+
+═══════════════════════════════════════════════════════════════
+
+Need help? Check these files:
+• TEST_EMAIL_SETUP.md (detailed guide)
+• FORMSUBMIT_TROUBLESHOOTING.md (solutions)
+• FIX_EMAIL_NOW.md (quick fixes)
+
+═══════════════════════════════════════════════════════════════
+
+🎉 START TESTING NOW!
+
+1. Run your website
+2. Submit the form
+3. Check yancyalmiranez@gmail.com
+4. Click verification link
+5. Test again!
+
+Good luck! 🚀

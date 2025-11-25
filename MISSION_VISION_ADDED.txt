@@ -1,0 +1,145 @@
+========================================
+  MISSION & VISION SECTION - ADDED! ✅
+========================================
+
+A beautiful Mission & Vision section has been added to the website!
+
+WHAT'S INCLUDED:
+================
+
+1. 🎯 MISSION STATEMENT
+   - Beautiful glass-morphism card design
+   - Icon with mission symbol
+   - Clear mission statement
+   - 3 key mission points:
+     ✓ Quality Craftsmanship
+     ✓ Customer Satisfaction
+     ✓ Innovative Designs
+
+2. 👁️ VISION STATEMENT
+   - Matching design with vision icon
+   - Inspiring vision statement
+   - 3 key vision points:
+     ✓ Industry Leadership
+     ✓ Design Excellence
+     ✓ Sustainable Future
+
+3. 💎 CORE VALUES SECTION
+   - 6 company values in grid layout:
+     • Quality - Excellence in every piece
+     • Integrity - Honest and transparent
+     • Innovation - Creative and modern designs
+     • Care - Customer-first approach
+     • Sustainability - Eco-friendly practices
+     • Reliability - Dependable service
+
+DESIGN FEATURES:
+================
+
+✨ STUNNING VISUAL DESIGN:
+   - Dark overlay with furniture background
+   - Parallax scrolling effect
+   - Glass-morphism cards (frosted glass effect)
+   - Hover animations (lift effect)
+   - Gold/bronze accent colors
+
+🎨 BEAUTIFUL CARDS:
+   - Semi-transparent background
+   - Backdrop blur effect
+   - Border with subtle glow
+   - Icon circles in brand colors
+   - Smooth hover transitions
+
+📱 FULLY RESPONSIVE:
+   - Desktop: Side-by-side cards
+   - Tablet: Stacked cards
+   - Mobile: Optimized spacing
+   - Values adapt to screen size
+
+🎭 INTERACTIVE ELEMENTS:
+   - Cards lift on hover
+   - Smooth animations
+   - Icon animations
+   - Professional transitions
+
+LOCATION:
+=========
+
+The Mission & Vision section is placed:
+- After the "About" section
+- Before the "Products" section
+- Visible in the page flow
+
+CONTENT SUMMARY:
+================
+
+MISSION:
+"To provide premium quality furniture and fixtures that 
+transform living and working spaces into havens of comfort, 
+style, and functionality. We are committed to delivering 
+exceptional craftsmanship, innovative designs, and outstanding 
+customer service that exceeds expectations."
+
+VISION:
+"To be the leading furniture and fixture trading company 
+recognized for setting the standard in quality, design 
+innovation, and customer excellence. We envision a future 
+where every home and office is enhanced by our thoughtfully 
+crafted furniture, creating spaces that inspire and uplift."
+
+CORE VALUES:
+1. Quality - Excellence in every piece
+2. Integrity - Honest and transparent
+3. Innovation - Creative and modern designs
+4. Care - Customer-first approach
+5. Sustainability - Eco-friendly practices
+6. Reliability - Dependable service
+
+TECHNICAL DETAILS:
+==================
+
+HTML Structure:
+- mission-vision section
+- mission-card and vision-card
+- core-values subsection
+- SVG icons for mission/vision
+- Emoji icons for values
+
+CSS Features:
+- Glass-morphism effect
+- Parallax background
+- Hover animations
+- Grid layouts
+- Responsive breakpoints
+
+Colors:
+- Background: Navy blue + gold gradient
+- Cards: Frosted glass (rgba with blur)
+- Accents: Gold/bronze (#e8b96e)
+- Text: White with opacity
+
+TO VIEW:
+========
+
+1. Refresh maycie-website\index.html
+2. Scroll down past the About section
+3. See the beautiful Mission & Vision section!
+4. Hover over cards for animations
+5. Check on mobile for responsive design
+
+CUSTOMIZATION:
+==============
+
+You can easily edit the text in index.html:
+- Line ~121: Mission statement
+- Line ~144: Vision statement
+- Lines 164-193: Core values
+
+Change background image:
+- Edit line 452 in styles.css
+- Replace Unsplash URL with your own image
+
+========================================
+  Professional & Inspiring! 🌟
+========================================
+

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You - Maycie Furniture & Fixture Trading</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <style>
+        .thank-you-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, rgba(44, 62, 80, 0.9), rgba(199, 149, 109, 0.8));
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+        .thank-you-content {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 15px;
+            padding: 3rem;
+        }
+        .thank-you-icon {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        .thank-you-title {
+            font-family: var(--font-secondary);
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--accent-color);
+        }
+        .thank-you-message {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+        .back-home {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background: var(--secondary-color);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .back-home:hover {
+            background: var(--accent-color);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="thank-you-container">
+        <div class="thank-you-content">
+            <div class="thank-you-icon">✅</div>
+            <h1 class="thank-you-title">Thank You!</h1>
+            <p class="thank-you-message">
+                Your message has been successfully sent to Maycie Furniture & Fixture Trading. 
+                We appreciate your interest and will get back to you within 24 hours.
+            </p>
+            <p class="thank-you-message">
+                <strong>What happens next?</strong><br>
+                Our team will review your inquiry and contact you via email or phone to discuss your furniture needs.
+            </p>
+            <a href="index.html" class="back-home">Back to Home</a>
+        </div>
+    </div>
+
+    <script>
+        // Auto redirect after 10 seconds
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 10000);
+    </script>
+</body>
+</html>
