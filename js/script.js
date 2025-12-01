@@ -271,25 +271,43 @@ document.head.appendChild(style);
 // Gallery Lightbox Effect
 // ===================================
 const galleryItems = document.querySelectorAll('.gallery-item');
+let currentGalleryIndex = 0;
+let activeLightbox = null;
 
-galleryItems.forEach(item => {
-    item.addEventListener('click', function() {
-        const imgSrc = this.querySelector('img').src;
-        const caption = this.querySelector('.gallery-overlay span').textContent;
-        
-        // Create lightbox
-        const lightbox = document.createElement('div');
-        lightbox.className = 'lightbox';
-        lightbox.innerHTML = `
+// Create gallery data array
+const galleryData = Array.from(galleryItems).map(item => ({
+    src: item.querySelector('img').src,
+    caption: item.querySelector('.gallery-overlay span').textContent
+}));
+
+function openLightbox(index) {
+    currentGalleryIndex = index;
+    
+    // Create lightbox if it doesn't exist
+    if (!activeLightbox) {
+        activeLightbox = document.createElement('div');
+        activeLightbox.className = 'lightbox';
+        activeLightbox.innerHTML = `
             <div class="lightbox-content">
                 <span class="lightbox-close">&times;</span>
-                <img src="${imgSrc}" alt="${caption}">
-                <p class="lightbox-caption">${caption}</p>
+                <button class="lightbox-nav lightbox-prev" title="Previous Image">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="15 18 9 12 15 6"></polyline>
+                    </svg>
+                </button>
+                <button class="lightbox-nav lightbox-next" title="Next Image">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <polyline points="9 18 15 12 9 6"></polyline>
+                    </svg>
+                </button>
+                <img class="lightbox-image" src="" alt="">
+                <p class="lightbox-caption"></p>
+                <div class="lightbox-counter"></div>
             </div>
         `;
         
         // Style lightbox
-        lightbox.style.cssText = `
+        activeLightbox.style.cssText = `
             position: fixed;
             top: 0;
             left: 0;
@@ -303,22 +321,26 @@ galleryItems.forEach(item => {
             animation: fadeIn 0.3s ease;
         `;
         
-        const lightboxContent = lightbox.querySelector('.lightbox-content');
+        const lightboxContent = activeLightbox.querySelector('.lightbox-content');
         lightboxContent.style.cssText = `
             max-width: 90%;
             max-height: 90%;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         `;
         
-        const img = lightbox.querySelector('img');
+        const img = activeLightbox.querySelector('.lightbox-image');
         img.style.cssText = `
             max-width: 100%;
             max-height: 80vh;
             border-radius: 10px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+            transition: opacity 0.3s ease;
         `;
         
-        const caption_el = lightbox.querySelector('.lightbox-caption');
+        const caption_el = activeLightbox.querySelector('.lightbox-caption');
         caption_el.style.cssText = `
             color: white;
             text-align: center;
@@ -326,45 +348,139 @@ galleryItems.forEach(item => {
             font-size: 1.2rem;
         `;
         
-        const closeBtn = lightbox.querySelector('.lightbox-close');
+        const counter = activeLightbox.querySelector('.lightbox-counter');
+        counter.style.cssText = `
+            color: rgba(255, 255, 255, 0.7);
+            text-align: center;
+            margin-top: 0.5rem;
+            font-size: 0.9rem;
+        `;
+        
+        const closeBtn = activeLightbox.querySelector('.lightbox-close');
         closeBtn.style.cssText = `
             position: absolute;
-            top: -40px;
+            top: -50px;
             right: 0;
             color: white;
             font-size: 3rem;
             cursor: pointer;
             transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.1);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            line-height: 1;
         `;
         
+        const navButtons = activeLightbox.querySelectorAll('.lightbox-nav');
+        navButtons.forEach(btn => {
+            btn.style.cssText = `
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                background: rgba(255, 255, 255, 0.9);
+                border: none;
+                width: 50px;
+                height: 50px;
+                border-radius: 50%;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                transition: all 0.3s ease;
+                color: #2c3e50;
+            `;
+        });
+        
+        activeLightbox.querySelector('.lightbox-prev').style.left = '20px';
+        activeLightbox.querySelector('.lightbox-next').style.right = '20px';
+        
+        // Event listeners
         closeBtn.addEventListener('mouseover', function() {
-            this.style.transform = 'scale(1.2)';
+            this.style.transform = 'scale(1.2) rotate(90deg)';
+            this.style.background = 'rgba(199, 149, 109, 0.9)';
         });
         
         closeBtn.addEventListener('mouseout', function() {
             this.style.transform = 'scale(1)';
+            this.style.background = 'rgba(255, 255, 255, 0.1)';
         });
         
-        // Add to page
-        document.body.appendChild(lightbox);
-        document.body.style.overflow = 'hidden';
-        
-        // Close lightbox
-        const closeLightbox = () => {
-            lightbox.style.animation = 'fadeOut 0.3s ease';
-            setTimeout(() => {
-                lightbox.remove();
-                document.body.style.overflow = '';
-            }, 300);
-        };
+        navButtons.forEach(btn => {
+            btn.addEventListener('mouseover', function() {
+                this.style.transform = 'translateY(-50%) scale(1.1)';
+                this.style.background = '#c7956d';
+                this.style.color = 'white';
+            });
+            
+            btn.addEventListener('mouseout', function() {
+                this.style.transform = 'translateY(-50%) scale(1)';
+                this.style.background = 'rgba(255, 255, 255, 0.9)';
+                this.style.color = '#2c3e50';
+            });
+        });
         
         closeBtn.addEventListener('click', closeLightbox);
-        lightbox.addEventListener('click', (e) => {
-            if (e.target === lightbox) {
+        activeLightbox.querySelector('.lightbox-prev').addEventListener('click', () => navigateGallery('prev'));
+        activeLightbox.querySelector('.lightbox-next').addEventListener('click', () => navigateGallery('next'));
+        
+        activeLightbox.addEventListener('click', (e) => {
+            if (e.target === activeLightbox) {
                 closeLightbox();
             }
         });
-    });
+        
+        document.body.appendChild(activeLightbox);
+    }
+    
+    // Update content
+    updateLightboxContent();
+    document.body.style.overflow = 'hidden';
+}
+
+function updateLightboxContent() {
+    const data = galleryData[currentGalleryIndex];
+    const img = activeLightbox.querySelector('.lightbox-image');
+    const caption = activeLightbox.querySelector('.lightbox-caption');
+    const counter = activeLightbox.querySelector('.lightbox-counter');
+    
+    img.style.opacity = '0';
+    
+    setTimeout(() => {
+        img.src = data.src;
+        img.alt = data.caption;
+        caption.textContent = data.caption;
+        counter.textContent = `${currentGalleryIndex + 1} / ${galleryData.length}`;
+        img.style.opacity = '1';
+    }, 150);
+}
+
+function navigateGallery(direction) {
+    if (direction === 'next') {
+        currentGalleryIndex = (currentGalleryIndex + 1) % galleryData.length;
+    } else {
+        currentGalleryIndex = (currentGalleryIndex - 1 + galleryData.length) % galleryData.length;
+    }
+    updateLightboxContent();
+}
+
+function closeLightbox() {
+    if (activeLightbox) {
+        activeLightbox.style.animation = 'fadeOut 0.3s ease';
+        setTimeout(() => {
+            activeLightbox.remove();
+            activeLightbox = null;
+            document.body.style.overflow = '';
+        }, 300);
+    }
+}
+
+// Add click listeners to gallery items
+galleryItems.forEach((item, index) => {
+    item.addEventListener('click', () => openLightbox(index));
 });
 
 // Add fadeIn/fadeOut animations
@@ -413,6 +529,9 @@ console.log('%c Crafting Quality Furniture for Your Perfect Space ', 'background
 // ===================================
 // Product Details Data
 // ===================================
+const productOrder = ['living-room', 'bedroom', 'dining', 'office', 'cabinets', 'tables', 'kitchen', 'tvracks'];
+let currentProductIndex = 0;
+
 const productData = {
     'living-room': {
         title: 'Living Room Collection',
@@ -540,7 +659,18 @@ function openProductModal(productId) {
         return;
     }
     
+    // Update current product index
+    currentProductIndex = productOrder.indexOf(productId);
+    
     // Populate modal content
+    updateModalContent(data);
+    
+    // Show modal
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+}
+
+function updateModalContent(data) {
     document.getElementById('modalProductTitle').textContent = data.title;
     document.getElementById('modalProductDescription').textContent = data.description;
     document.getElementById('modalProductImage').src = data.image;
@@ -554,10 +684,29 @@ function openProductModal(productId) {
         li.textContent = feature;
         featuresList.appendChild(li);
     });
+}
+
+function navigateProduct(direction) {
+    if (direction === 'next') {
+        currentProductIndex = (currentProductIndex + 1) % productOrder.length;
+    } else {
+        currentProductIndex = (currentProductIndex - 1 + productOrder.length) % productOrder.length;
+    }
     
-    // Show modal
-    modal.classList.add('active');
-    document.body.style.overflow = 'hidden';
+    const productId = productOrder[currentProductIndex];
+    const data = productData[productId];
+    
+    // Add slide animation
+    const modalBody = document.querySelector('.modal-body');
+    modalBody.style.opacity = '0';
+    modalBody.style.transform = direction === 'next' ? 'translateX(20px)' : 'translateX(-20px)';
+    
+    setTimeout(() => {
+        updateModalContent(data);
+        modalBody.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
+        modalBody.style.opacity = '1';
+        modalBody.style.transform = 'translateX(0)';
+    }, 150);
 }
 
 function closeProductModal() {
@@ -586,10 +735,30 @@ document.addEventListener('click', (e) => {
     }
 });
 
-// Close modal with ESC key
+// Unified keyboard navigation for both modal and lightbox
 document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape') {
-        closeProductModal();
+    // Check if gallery lightbox is open
+    if (activeLightbox) {
+        if (e.key === 'Escape') {
+            closeLightbox();
+        } else if (e.key === 'ArrowRight') {
+            navigateGallery('next');
+        } else if (e.key === 'ArrowLeft') {
+            navigateGallery('prev');
+        }
+        return;
+    }
+    
+    // Check if product modal is open
+    const modal = document.getElementById('productModal');
+    if (modal && modal.classList.contains('active')) {
+        if (e.key === 'Escape') {
+            closeProductModal();
+        } else if (e.key === 'ArrowRight') {
+            navigateProduct('next');
+        } else if (e.key === 'ArrowLeft') {
+            navigateProduct('prev');
+        }
     }
 });
 

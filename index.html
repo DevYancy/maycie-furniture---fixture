@@ -464,7 +464,7 @@
                         <input type="hidden" name="_subject" value="New Contact Form Submission - Maycie Furniture">
                         <input type="hidden" name="_captcha" value="false">
                         <input type="hidden" name="_template" value="table">
-                        <input type="hidden" name="_next" value="https://devyancy.github.io/maycie-furniture---fixture/thank-you.html">
+
                         
                         <div class="form-group">
                             <input type="text" name="name" id="contactName" placeholder="Your Name" required>
@@ -555,6 +555,16 @@
     <div id="productModal" class="product-modal">
         <div class="modal-content">
             <span class="modal-close" onclick="closeProductModal()">&times;</span>
+            <button class="modal-nav modal-prev" onclick="navigateProduct('prev')" title="Previous Product">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            <button class="modal-nav modal-next" onclick="navigateProduct('next')" title="Next Product">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
             <div class="modal-body">
                 <div class="modal-image">
                     <img id="modalProductImage" src="" alt="Product">
@@ -582,6 +592,4 @@
     <script src="js/script.js"></script>
 </body>
 </html>
-
-
 
