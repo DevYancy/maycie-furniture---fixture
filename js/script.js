@@ -373,6 +373,9 @@ function openLightbox(index) {
             align-items: center;
             justify-content: center;
             line-height: 1;
+            z-index: 100;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
         `;
         
         const navButtons = activeLightbox.querySelectorAll('.lightbox-nav');
@@ -392,6 +395,9 @@ function openLightbox(index) {
                 justify-content: center;
                 transition: all 0.3s ease;
                 color: #2c3e50;
+                z-index: 100;
+                -webkit-tap-highlight-color: transparent;
+                touch-action: manipulation;
             `;
         });
         
@@ -423,9 +429,32 @@ function openLightbox(index) {
             });
         });
         
+        // Click events
         closeBtn.addEventListener('click', closeLightbox);
-        activeLightbox.querySelector('.lightbox-prev').addEventListener('click', () => navigateGallery('prev'));
-        activeLightbox.querySelector('.lightbox-next').addEventListener('click', () => navigateGallery('next'));
+        const prevBtn = activeLightbox.querySelector('.lightbox-prev');
+        const nextBtn = activeLightbox.querySelector('.lightbox-next');
+        
+        prevBtn.addEventListener('click', () => navigateGallery('prev'));
+        nextBtn.addEventListener('click', () => navigateGallery('next'));
+        
+        // Touch events for mobile
+        prevBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            navigateGallery('prev');
+        }, { passive: false });
+        
+        nextBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            navigateGallery('next');
+        }, { passive: false });
+        
+        closeBtn.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            closeLightbox();
+        }, { passive: false });
         
         activeLightbox.addEventListener('click', (e) => {
             if (e.target === activeLightbox) {
@@ -482,6 +511,45 @@ function closeLightbox() {
 galleryItems.forEach((item, index) => {
     item.addEventListener('click', () => openLightbox(index));
 });
+
+// ===================================
+// Touch Swipe Support for Mobile
+// ===================================
+let touchStartX = 0;
+let touchEndX = 0;
+
+document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+}, { passive: true });
+
+document.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+}, { passive: true });
+
+function handleSwipe() {
+    const swipeThreshold = 50;
+    const swipeDistance = touchEndX - touchStartX;
+    
+    // Gallery lightbox swipe
+    if (activeLightbox && Math.abs(swipeDistance) > swipeThreshold) {
+        if (swipeDistance > 0) {
+            navigateGallery('prev');
+        } else {
+            navigateGallery('next');
+        }
+    }
+    
+    // Product modal swipe
+    const modal = document.getElementById('productModal');
+    if (modal && modal.classList.contains('active') && Math.abs(swipeDistance) > swipeThreshold) {
+        if (swipeDistance > 0) {
+            navigateProduct('prev');
+        } else {
+            navigateProduct('next');
+        }
+    }
+}
 
 // Add fadeIn/fadeOut animations
 const fadeStyle = document.createElement('style');
@@ -732,6 +800,29 @@ document.addEventListener('click', (e) => {
     const modal = document.getElementById('productModal');
     if (e.target === modal) {
         closeProductModal();
+    }
+});
+
+// Add touch event support for mobile devices
+document.addEventListener('DOMContentLoaded', () => {
+    // Product modal navigation buttons
+    const modalPrev = document.querySelector('.modal-prev');
+    const modalNext = document.querySelector('.modal-next');
+    
+    if (modalPrev) {
+        modalPrev.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            navigateProduct('prev');
+        }, { passive: false });
+    }
+    
+    if (modalNext) {
+        modalNext.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            navigateProduct('next');
+        }, { passive: false });
     }
 });
 

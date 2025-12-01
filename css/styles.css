@@ -1519,7 +1519,7 @@ section {
     font-size: 2.5rem;
     color: var(--text-dark);
     cursor: pointer;
-    z-index: 10;
+    z-index: 100;
     width: 40px;
     height: 40px;
     display: flex;
@@ -1529,9 +1529,12 @@ section {
     border-radius: 50%;
     box-shadow: var(--shadow-md);
     transition: var(--transition);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
-.modal-close:hover {
+.modal-close:hover,
+.modal-close:active {
     transform: rotate(90deg) scale(1.1);
     background: var(--secondary-color);
     color: white;
@@ -1550,12 +1553,15 @@ section {
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10;
+    z-index: 100;
     transition: var(--transition);
     box-shadow: var(--shadow-md);
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
 }
 
-.modal-nav:hover {
+.modal-nav:hover,
+.modal-nav:active {
     background: var(--secondary-color);
     color: white;
     transform: translateY(-50%) scale(1.1);
